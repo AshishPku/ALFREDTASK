@@ -1,110 +1,88 @@
-# ALFREDTASK
-
-ALFREDTASK is a web-based task management application built using the MERN (MongoDB, Express.js, React, Node.js) stack. It allows users to create, manage, and track tasks efficiently with a user-friendly interface.
+# Flashcard Learning App with Leitner System
+## Live Demo
+🔗 **Try the application here:** [Flashcard Learning App](https://alfredtask-nh2p.onrender.com/)
 
 ## Features
+This project is a Flashcard Learning App built using the MERN (MongoDB, Express.js, React, Node.js) stack. It incorporates the **Leitner System**, a spaced repetition technique, to help users efficiently review and memorize flashcards.
+### ✅ Backend (Node.js, Express, MongoDB, Mongoose)
+- **API Endpoints:**
+  - `POST /flashcards` → Add a new flashcard
+  - `GET /flashcards` → Get all flashcards
+  - `PUT /flashcards/:id` → Update a flashcard (move to the next level if answered correctly)
+  - `DELETE /flashcards/:id` → Delete a flashcard
+- **Leitner System Logic:**
+  - Flashcards start in **Box 1**.
+  - If answered correctly, they move to the next box.
+  - If answered incorrectly, they return to Box 1.
+  - Higher boxes have longer review intervals.
+- **Data Storage:** Flashcards include **box level, question, answer, and next review date**, stored in MongoDB.
 
-- **User Authentication**: Secure login and registration system.
-- **Task Management**: Create, update, delete, and categorize tasks.
-- **Real-Time Updates**: Dynamic updates using React state management.
-- **RESTful API**: Backend powered by Express.js and MongoDB.
-- **Responsive UI**: Built with React and styled for a seamless experience.
-- **API Integration**: Utilizes Axios for client-server communication.
-
+### ✅ Frontend (React, React Hooks, Axios, Tailwind/Bootstrap)
+- Display flashcards with options:
+  - "Show Answer" button
+  - "Got it right" and "Got it wrong" buttons
+- Update flashcard levels based on user responses.
+- Fetch flashcards based on their next review date.
+- Show progress.
+- Clean and simple UI with minimal distractions.
 ## Tech Stack
 
 ### Frontend:
 - React.js
-- Vite
 - Axios
-- CSS (or styled-components, if applicable)
+- Tailwind CSS
 
 ### Backend:
 - Node.js
 - Express.js
-- MongoDB (Mongoose for ODM)
+- MongoDB (atlas)
 
-## Installation
+## Installation & Setup
 
 ### Prerequisites
 Ensure you have the following installed:
-- Node.js (v16+ recommended)
-- MongoDB (running locally or using a cloud service like MongoDB Atlas)
+- Node.js
+- MongoDB (MongoDB Atlas)
 - Git
 
 ### Steps to Run Locally
 
-#### 1. Clone the repository
+#### 1. Clone the Repository
 ```sh
-git clone https://github.com/AshishPku/ALFREDTASK.git
+https://github.com/AshishPku/ALFREDTASK.git
 cd ALFREDTASK
 ```
 
-#### 2. Install backend dependencies
+#### 2. Backend Setup
 ```sh
+cd server
 npm install
 ```
 
-#### 3. Set up environment variables
-Create a `.env` file in the root directory and add the required variables:
+#### 3. Set Up Environment Variables
+Create a `.env` file in the `server` directory and add:
 ```env
-MONGO_URI=<your_mongodb_connection_string>
+MONGO_URI=mongodb://localhost:27017
 PORT=5000
-JWT_SECRET=<your_secret_key>
 ```
 
-#### 4. Start the backend server
-```sh
-npm start
-```
-
-#### 5. Install frontend dependencies
-```sh
-cd client
-npm install
-```
-
-#### 6. Start the frontend
+#### 4. Start the Backend Server
 ```sh
 npm run dev
 ```
 
-## Deployment
+#### 5. Frontend Setup
+```sh
+cd ../client
+npm install
+```
 
-### Render Deployment (Backend)
-1. Push your code to GitHub.
-2. Go to [Render](https://render.com/), create a new web service, and connect your repository.
-3. Set the build and start commands:
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-4. Add environment variables under **Settings > Environment**.
-5. Deploy and test your API.
-
-### Render Deployment (Frontend)
-1. In `client/package.json`, ensure `axios` is installed:
-   ```sh
-   npm install axios
-   ```
-2. Add the backend URL in `client/.env`:
-   ```env
-   VITE_API_URL=<your_backend_url>
-   ```
-3. Deploy the frontend on platforms like **Vercel** or **Render**.
-
-## Troubleshooting
-
-### Axios Import Error in Render Deployment
-If you face `Rollup failed to resolve import "axios"` error:
-1. Navigate to the `client` folder and install axios:
-   ```sh
-   cd client
-   npm install axios
-   ```
-2. Rebuild and redeploy.
-
-## Contributing
-Pull requests are welcome. Please follow proper coding conventions and ensure to test the changes before submitting.
-
+#### 6. Start the Frontend
+```sh
+npm run dev
+```
+## Contribution
+Pull requests are welcome. Please follow best coding practices and ensure proper testing before submitting changes.
 ## License
 This project is licensed under the MIT License.
 
