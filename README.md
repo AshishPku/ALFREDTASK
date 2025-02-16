@@ -81,6 +81,12 @@ npm install
 ```sh
 npm run dev
 ```
+
+<p align="center">
+  <img src="img1.png" width="300">
+  <img src="img2.png" width="300">
+  <img src="img3.png" width="300">
+</p>
 ## Contribution
 Pull requests are welcome. Please follow best coding practices and ensure proper testing before submitting changes.
 ## License
