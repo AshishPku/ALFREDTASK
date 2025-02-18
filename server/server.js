@@ -4,19 +4,14 @@ import cors from "cors";
 import flashcardRoutes from "./routes/FlashCardRoutes.js";
 import path from "path";
 import dotenv from "dotenv";
-
-dotenv.config(); // Load environment variables
-
+dotenv.config();
 const app = express();
 const __dirname = path.resolve();
-
 // Middleware
 app.use(express.json());
 app.use(cors());
-
 // Routes
 app.use("/api/flashcards", flashcardRoutes);
-
 // Database connection
 const MONGO_URI = process.env.MONGO_URI;
 if (!MONGO_URI) {
