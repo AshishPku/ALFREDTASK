@@ -14,9 +14,7 @@ const App = () => {
   useEffect(() => {
     const fetchFlashcards = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:5000/api/flashcards"
-        );
+        const response = await axios.get("/api/flashcards");
         setFlashcards(response.data);
       } catch (error) {
         console.error("Error fetching flashcards:", error);

@@ -14,9 +14,7 @@ const Dashboard = ({ onAddFlashcard }) => {
   useEffect(() => {
     const fetchDueFlashcards = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:5000/api/flashcards/due"
-        );
+        const response = await axios.get("/api/flashcards/due");
         setFlashcards(response.data.data);
         setDueCount(response.data.count);
       } catch (error) {
@@ -38,12 +36,9 @@ const Dashboard = ({ onAddFlashcard }) => {
 
   const handleUpdateFlashcard = async (id, isCorrect) => {
     try {
-      const response = await axios.put(
-        `http://127.0.0.1:5000/api/flashcards/${id}`,
-        {
-          isCorrect: isCorrect.toString(),
-        }
-      );
+      const response = await axios.put(`/api/flashcards/${id}`, {
+        isCorrect: isCorrect.toString(),
+      });
 
       setFlashcards((prevFlashcards) =>
         prevFlashcards.map((flashcard) =>
@@ -51,9 +46,7 @@ const Dashboard = ({ onAddFlashcard }) => {
         )
       );
 
-      const dueResponse = await axios.get(
-        "http://127.0.0.1:5000/api/flashcards/due"
-      );
+      const dueResponse = await axios.get("/api/flashcards/due");
       setFlashcards(dueResponse.data.data);
       setDueCount(dueResponse.data.count);
 
@@ -65,7 +58,7 @@ const Dashboard = ({ onAddFlashcard }) => {
 
   const handleDeleteFlashcard = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/api/flashcards/${id}`);
+      await axios.delete(`/api/flashcards/${id}`);
       setFlashcards((prevFlashcards) =>
         prevFlashcards.filter((flashcard) => flashcard._id !== id)
       );

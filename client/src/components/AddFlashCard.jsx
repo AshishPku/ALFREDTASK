@@ -15,13 +15,10 @@ const AddFlashcard = ({ onAdd, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/api/flashcards",
-        {
-          question,
-          answer,
-        }
-      );
+      const response = await axios.post("/api/flashcards", {
+        question,
+        answer,
+      });
       onAdd(response.data);
       setQuestion("");
       setAnswer("");
